@@ -1,0 +1,7 @@
+{
+    "require": {
+        "monolog/monolog": "^1.19",
+        "fpdo/fluentpdo": "dev-master",
+        "firebase/php-jwt": "dev-master"
+    }
+}
