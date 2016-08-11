@@ -26,6 +26,7 @@ define('_APP_PATH_', __DIR__ . '/app/');
 if($config->environment === 'stop') {
     exit('Website is current down ..');
 }
+
 if($config->environment === 'prod') {
     error_reporting(0);
 }

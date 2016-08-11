@@ -4,7 +4,6 @@ namespace App\Models;
 use Core\DbContext,
     Core\Auth,
     Core\Response,
-    Core\Crypt,
     Carbon\Carbon;
 
 class Mailing {
@@ -77,20 +76,20 @@ class Mailing {
     }
 
     public function getAll(){
-      /* AnexGrid */
-      $anexgrid = new \App\Libs\AnexGrid();
-
-      /* Query */
-      $query = $this->db
+        /* AnexGrid */
+        $anexgrid = new \App\Libs\AnexGrid();
+        
+        /* Query */
+        $query = $this->db
            ->from($this->table)
            ->orderBy("$anexgrid->columna $anexgrid->columna_orden")
            ->limit($anexgrid->limite)
            ->offset($anexgrid->pagina);
 
-      /* Filtro */
-      $ignoreDelete = false;
-      foreach($anexgrid->filtros as $f)
-      {
+        /* Filtro */
+        $ignoreDelete = false;
+        foreach($anexgrid->filtros as $f)
+        {
           if($f['columna'] === 'name') {
             $query = $query->where('name LIKE ?', $f['valor']);
           }
@@ -113,23 +112,23 @@ class Mailing {
               $query = $query->where('email LIKE ?', '%' . $f['valor'] . '%');
             }
           }
-      }
+        }
 
-      if(!$ignoreDelete) {
+        if(!$ignoreDelete) {
         $query = $query->where('inactive', 0);
-      }
+        }
 
-      /* Los registros */
-      $result = $query->fetchAll();
+        /* Los registros */
+        $result = $query->fetchAll();
 
-      /* El total de registros */
-      $total = $this->db
+        /* El total de registros */
+        $total = $this->db
                     ->from($this->table)
                     ->select('COUNT(*) Total')
                     ->fetch()
                     ->Total;
 
-      return $anexgrid->responde($result, $total);
+        return $anexgrid->responde($result, $total);
     }
 
     public function groups(){

@@ -54,7 +54,7 @@ class Controller {
         header("HTTP/1.0 404 Not Found");
         require_once _APP_PATH_ . $this->basePath . 'error/404.php';
         
-        Logger::warning(
+        Logger::error(
             'ROUTE',
             sprintf('Current route: [%s] not founded in server.', Router::$currentRoute)
         );
