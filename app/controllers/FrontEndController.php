@@ -6,7 +6,10 @@ use App\Helpers\Url,
     Core\Request,
     Core\Json,
     Core\Response,
+    Core\Logger,
+    Core\Token,
     App\Validations\SubscriptorValidation,
+    Firebase\JWT\JWT,
     Config;
 
 class FrontEndController extends \Core\Controller {
@@ -22,12 +25,28 @@ class FrontEndController extends \Core\Controller {
     
     public function index() {
         $this->partial('frontend/index', [
-            'config' => $this->config
+            'config' => $this->config,
+            'token'  => Token::generate()
         ]);
     }
     
     public function add() {
+        header('application/json');
+        
         $req = Request::fromBody();
+        
+        if(!Token::verify(@$req['token'])){
+            Logger::warning(
+                'SUBSCRIPTION',
+                'Subscription token failed ..'
+            );
+            
+            $this->rm->setResponse(false, 'Request not allowed');
+            Json::encode( $this->rm );
+            
+            exit;            
+        }
+        
         $val = SubscriptorValidation::validate( $req );
             
         if ($val->isSuccess()) {

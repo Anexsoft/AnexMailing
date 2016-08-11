@@ -2,8 +2,7 @@
 namespace Core;
 
 use Core\Router,
-    Monolog\Logger,
-    Monolog\Handler\StreamHandler;
+    Core\Logger;
 
 class Controller {
     protected $layout = 'layout';
@@ -55,12 +54,11 @@ class Controller {
         header("HTTP/1.0 404 Not Found");
         require_once _APP_PATH_ . $this->basePath . 'error/404.php';
         
-        $file = date('Y-m-d') . '.log';
+        Logger::warning(
+            'ROUTE',
+            sprintf('Current route: [%s] not founded in server.', Router::$currentRoute)
+        );
         
-        $log = new Logger('ROUTE');
-        $log->pushHandler(new StreamHandler(_LOG_PATH_ . '/' . $file, Logger::WARNING));
-        $log->error(sprintf('Current route: [%s] not founded in server.', Router::$currentRoute));
-        
-        exit();
+        exit;
     }
 }

@@ -8,7 +8,7 @@
             <table class="table table-striped">
                 <tbody>
                     <tr>
-                        <td colspan="2">
+                        <td colspan="2" class="text-justify">
 Desactive el <b>TEST</b> en un ambiente de producción para evitar exponer la seguridad de su sistema a usuarios ajenos. Este apartado se dejará de visualizar automáticamente si su entorno de trabajo es <b>PROD</b>.
                         </td>
                     </tr>
@@ -25,7 +25,7 @@ Desactive el <b>TEST</b> en un ambiente de producción para evitar exponer la se
                             <b>PHP Version 5.5+</b>
                         </td>
                         <td class="text-right">
-                            <?php echo (int)str_replace('.', '', phpversion()) > 5500 ? '<i class="fa fa-check"></i>' : '<i class="fa fa-close"></i>'; ?>
+                            <?php echo (int)substr(str_replace('.', '', phpversion()), 0, 2) >= 55 ? '<i class="fa fa-check"></i>' : '<i class="fa fa-close"></i>'; ?>
                         </td>
                     </tr>
                     <tr>
@@ -47,7 +47,7 @@ Desactive el <b>TEST</b> en un ambiente de producción para evitar exponer la se
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td colspan="2" class="text-justify">
                             <b>Nota</b>: se recomiendan trabajar con un limite de memoria alto o igual (-1) ya que, cuando se tiene una lista de suscriptores grandes esto evita que el servidor colapse al momento de generar el archivo de exportación. <em>Actualmente se han hecho pruebas con 200 mil suscriptores</em>.
                         </td>
                     </tr>

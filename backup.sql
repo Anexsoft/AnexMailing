@@ -32,8 +32,12 @@ CREATE TABLE IF NOT EXISTS `am_mailing` (
 /*!40000 ALTER TABLE `am_mailing` ENABLE KEYS */;
 
 
+
+-- En un comienzo se pensó trabajar con usuarios registrados en la BD, por ahora no hace falta esto porque el sistema no es muy complejo pero dejamos el script para un futuro.
+-- De todos modos la autenticación mediante base de datos esta deshabilitada
+
 -- Volcando estructura para tabla anexmailing.am_user
-CREATE TABLE IF NOT EXISTS `am_user` (
+/*CREATE TABLE IF NOT EXISTS `am_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
   `nickname` varchar(10) NOT NULL,
@@ -45,12 +49,12 @@ CREATE TABLE IF NOT EXISTS `am_user` (
   `is_active` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;*/
 
 -- Volcando datos para la tabla anexmailing.am_user: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `am_user` DISABLE KEYS */;
-INSERT INTO `am_user` (`id`, `name`, `nickname`, `email`, `password`, `last_login`, `created_at`, `updated_at`, `is_active`) VALUES
-	(1, 'eduardo', 'erodriguez', 'demo@anexmailing.com', '$2y$10$hRm2Q4YqeeC6jltYwOKh8eLfsv4zwSkoteAp6Ew9/o/sYmLtOU4vi', '2016-08-10 23:36:23', '2016-07-31 12:20:43', '2016-07-31 12:20:44', 1);
+/*INSERT INTO `am_user` (`id`, `name`, `nickname`, `email`, `password`, `last_login`, `created_at`, `updated_at`, `is_active`) VALUES
+	(1, 'eduardo', 'erodriguez', 'demo@anexmailing.com', '$2y$10$hRm2Q4YqeeC6jltYwOKh8eLfsv4zwSkoteAp6Ew9/o/sYmLtOU4vi', '2016-08-10 23:36:23', '2016-07-31 12:20:43', '2016-07-31 12:20:44', 1);*/
 /*!40000 ALTER TABLE `am_user` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

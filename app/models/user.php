@@ -4,8 +4,7 @@ namespace App\Models;
 use Core\DbContext,
     Core\Auth,
     Core\Response,
-    Core\Crypt,
-    Carbon\Carbon;
+    Config;
 
 class User {
     private $db = null;
@@ -43,37 +42,66 @@ class User {
                     ->fetch();
     }
     
+    // Without database
     public function signIn($email, $password) {
-        $user = $this->db
-                     ->from($this->table)
-                     ->where([
-                         'email' => $email,
-                         'is_active' => 1
-                     ])->fetch();
+        $user = null;
+        
+        foreach(Config::get()->users as $u) {
+            if($u['email'] === $email && $u['password']) {
+                $user = (object)$u;
+                break;
+            }
+        }
         
         if(is_object( $user )) {
-            if( Crypt::verify($password, $user->password) ) {
-                Auth::signIn(
-                    (object) [
-                        'id' => $user->id,
-                        'name' => $user->name,
-                        'nickname' => $user->nickname,
-                        'email' => $user->email,
-                        'last_login' => $user->last_login,
-                    ]
-                );
-                
-                $this->db->update($this->table, ['last_login' => Carbon::now()], $user->id)
-                         ->execute();
-                
-                $this->rm->setResponse(true);
-            } else {
-                $this->rm->setResponse(false, 'Acceso denegado');
-            }
+            Auth::signIn(
+                (object) [
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'last_login' => date('Y-m-d h:i:s'),
+                ]
+            );
+
+            $this->rm->setResponse(true);
         } else {
             $this->rm->setResponse(false, 'Acceso denegado');
         }
         
         return $this->rm;
     }
+    
+    // With database
+//    public function signIn($email, $password) {
+//        $user = $this->db
+//                     ->from($this->table)
+//                     ->where([
+//                         'email' => $email,
+//                         'is_active' => 1
+//                     ])->fetch();
+//        
+//        if(is_object( $user )) {
+//            if( Crypt::verify($password, $user->password) ) {
+//                Auth::signIn(
+//                    (object) [
+//                        'id' => $user->id,
+//                        'name' => $user->name,
+//                        'nickname' => $user->nickname,
+//                        'email' => $user->email,
+//                        'last_login' => $user->last_login,
+//                    ]
+//                );
+//                
+//                $this->db->update($this->table, ['last_login' => Carbon::now()], $user->id)
+//                         ->execute();
+//                
+//                $this->rm->setResponse(true);
+//            } else {
+//                $this->rm->setResponse(false, 'Acceso denegado');
+//            }
+//        } else {
+//            $this->rm->setResponse(false, 'Acceso denegado');
+//        }
+//        
+//        return $this->rm;
+//    }
 }

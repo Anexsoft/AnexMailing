@@ -2,7 +2,8 @@
           Core\Router,
           Core\Auth;
 
-$productName = Config::get()->productName . ' ' . Config::get()->productVersion;
+$config = Config::get();
+$productName = $config->productName . ' ' . $config->productVersion;
 $currentRoute = !empty($_GET['route']) ? $_GET['route'] : '';
 $user = null;
 
@@ -55,21 +56,26 @@ if(strtolower(Router::$controller) !== 'auth' && strtolower(Router::$controller)
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="<?php echo strpos($currentRoute, 'home') !== false || $currentRoute === '' ? 'active' : ''; ?>">
-                        <a href="<?php echo Url::getBase(''); ?>"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
+                        <a href="<?php echo Url::getBase(''); ?>"><i class="fa fa-dashboard"></i> Inicio</a>
                     </li>
                     <li class="<?php echo strpos($currentRoute, 'subscriptor') !== false ? 'active' : ''; ?>">
-                        <a href="<?php echo Url::getBase('subscriptor'); ?>"><i class="fa fa-envelope fa-fw"></i> Suscriptores</a>
+                        <a href="<?php echo Url::getBase('subscriptor'); ?>"><i class="fa fa-envelope"></i> Suscriptores</a>
                     </li>
+                    <?php if($config->environment !== 'prod'): ?>
+                    <li>
+                        <a target="_blank" href="<?php echo Url::getBase('example'); ?>"><i class="fa fa-file"></i> Página de ejemplo</a>
+                    </li>
+                    <?php endif; ?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="<?php echo strpos($currentRoute, 'user') !== false ? 'active' : ''; ?>">
                         <a href="<?php echo Url::getBase('user'); ?>">
-                            <i class="fa fa-user fa-fw"></i> <?php echo $user->nickname; ?>
+                            <i class="fa fa-user"></i> <?php echo $user->name; ?>
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo Url::getBase('auth/logout'); ?>">
-                            <i class="fa fa-sign-out fa-fw"></i> Desconectarse
+                            <i class="fa fa-sign-out"></i> Desconectarse
                         </a>
                     </li>
                 </ul>

@@ -21,55 +21,61 @@ class UserController extends \Core\Controller {
         $this->um = new User();
         $this->rm = new Response();
     }
-
+    
     public function index() {
         $this->view('user/index', [
-            'model' => $this->um->get( Auth::user()->id )
+            'model' => Auth::user()
         ]);
     }
 
-    public function save() {
-        // Validation
-        $rules = [
-            'name' => ['required'],
-            'nickname' => ['required'],
-        ];
+//    public function index() {
+//        $this->view('user/index', [
+//            'model' => $this->um->get( Auth::user()->id )
+//        ]);
+//    }
 
-        $req = Request::fromBody();
-
-        $val = SimpleValidator\Validator::validate($req, $rules);
-
-        if ($val->isSuccess() == true) {
-            $this->rm = $this->um->save( $req );
-        } else {
-            $this->rm->setErrors( $val->getErrors() );
-        }
-
-        Json::encode( $this->rm );
-    }
-
-    public function credentials() {
-        // Validation
-        $rules = [
-            'email' => ['required', 'email']
-        ];
-
-        $req = Request::fromBody();
-
-        if(!empty($req['password'])) {
-            $rules['password'] = ['required', 'min_length(4)'];
-        } else {
-            unset($req['password']);
-        }
-
-        $val = SimpleValidator\Validator::validate($req, $rules);
-
-        if ($val->isSuccess() == true) {
-            $this->rm = $this->um->save( $req );
-        } else {
-            $this->rm->setErrors( $val->getErrors() );
-        }
-
-        Json::encode( $this->rm );
-    }
+//    public function save() {
+//        // Validation
+//        $rules = [
+//            'name' => ['required'],
+//            'nickname' => ['required'],
+//        ];
+//
+//        $req = Request::fromBody();
+//
+//        $val = SimpleValidator\Validator::validate($req, $rules);
+//
+//        if ($val->isSuccess() == true) {
+//            $this->rm = $this->um->save( $req );
+//        } else {
+//            $this->rm->setErrors( $val->getErrors() );
+//        }
+//
+//        Json::encode( $this->rm );
+//    }
+//
+//    public function credentials() {
+//        // Validation
+//        $rules = [
+//            'email' => ['required', 'email']
+//        ];
+//
+//        $req = Request::fromBody();
+//
+//        if(!empty($req['password'])) {
+//            $rules['password'] = ['required', 'min_length(4)'];
+//        } else {
+//            unset($req['password']);
+//        }
+//
+//        $val = SimpleValidator\Validator::validate($req, $rules);
+//
+//        if ($val->isSuccess() == true) {
+//            $this->rm = $this->um->save( $req );
+//        } else {
+//            $this->rm->setErrors( $val->getErrors() );
+//        }
+//
+//        Json::encode( $this->rm );
+//    }
 }

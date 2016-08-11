@@ -9,7 +9,7 @@ class TestController extends \Core\Controller {
     public function index() {
         $config = Config::get();
         
-        if(!$config->testEnabled || $config->environment === 'prod') {
+        if($config->environment === 'prod') {
             Url::redirect('');
         }
         
