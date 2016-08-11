@@ -1,10 +1,11 @@
 <?php
 $folders = [ /* Load Folders */
     '',
+    '/../app/libs',
     '/../app/helpers',
+    '/../app/validations',
     '/../app/models',
-    '/../app/controllers/front',
-    '/../app/controllers/admin'
+    '/../app/controllers'
 ];
 
 require_once 'vendor/autoload.php'; /* Load Vendor*/

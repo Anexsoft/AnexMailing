@@ -2,6 +2,10 @@
     "require": {
         "monolog/monolog": "^1.19",
         "fpdo/fluentpdo": "dev-master",
-        "firebase/php-jwt": "dev-master"
+        "firebase/php-jwt": "dev-master",
+        "simple-validator/simple-validator": "dev-master",
+        "nesbot/carbon": "^1.21",
+        "mnshankar/CSV": "^1.8"
+
     }
 }

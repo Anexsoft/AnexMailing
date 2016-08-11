@@ -3,13 +3,29 @@ namespace Core;
 
 class Request {
     public static function get() {
-        $bodyData = [];
-        
-        $bodyData = self::sanitize( $_REQUEST );
-        
-        return $bodyData;
+        $data = [];
+
+        $data = self::sanitize( $_REQUEST );
+
+        return $data;
     }
-    
+
+    public static function fromBody() {
+        $data = [];
+
+        $data = self::sanitize( $_POST );
+
+        return $data;
+    }
+
+    public static function fromQueryString() {
+        $data = [];
+
+        $data = self::sanitize( $_GET );
+
+        return $data;
+    }
+
     public static function sanitize( $data ){
         foreach($data as $k => $r) {
             if(is_array($r)) {
@@ -18,7 +34,11 @@ class Request {
                 $data[$k] = trim($r);
             }
         }
-        
+
         return $data;
+    }
+
+    public static function isAjax() {
+      return (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
     }
 }

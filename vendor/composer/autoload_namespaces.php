@@ -6,5 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'mnshankar\\CSV' => array($vendorDir . '/mnshankar/csv/src'),
+    'SimpleValidator\\' => array($vendorDir . '/simple-validator/simple-validator/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
 );

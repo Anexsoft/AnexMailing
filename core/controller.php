@@ -9,6 +9,7 @@ class Controller {
     protected $layout = 'layout';
     private $content;
     private $section = [];
+    private $data = [];
     
     private $basePath = 'views/';
     
@@ -18,22 +19,23 @@ class Controller {
         extract($data);
         
         // Load View
-        require_once _APP_PATH_ . sprintf($this->basePath . '%s/%s.php', strtolower(Router::$area), str_replace('.php', '', $file));
+        require_once _APP_PATH_ . sprintf($this->basePath . '%s.php', str_replace('.php', '', $file));
     }
     
     
     protected function view($file, $data = []){
-        // Load View
-        $this->content = _APP_PATH_ . sprintf($this->basePath . '%s/%s.php', strtolower(Router::$area), str_replace('.php', '', $file));
-
         // Pass data to the view
-        extract($data);
+        $this->data = $data;
+        
+        // Load View
+        $this->content = _APP_PATH_ . sprintf($this->basePath . '%s.php', str_replace('.php', '', $file));
         
         // Load Layout
-        require_once _APP_PATH_ . sprintf($this->basePath . '%s/' . $this->layout . '.php', strtolower(Router::$area));
+        require_once _APP_PATH_ . sprintf($this->basePath . $this->layout . '.php');
     }
     
     private function render() {
+        extract( $this->data );
         require_once $this->content;
     }
     
@@ -51,7 +53,7 @@ class Controller {
     /* Error pages */
     public function error404() {
         header("HTTP/1.0 404 Not Found");
-        require_once _APP_PATH_ . sprintf($this->basePath . 'error/404.php', strtolower(Router::$area));
+        require_once _APP_PATH_ . $this->basePath . 'error/404.php';
         
         $file = date('Y-m-d') . '.log';
         
