@@ -115,6 +115,8 @@
             $("#verifyIfSuscribed").click(function(){
                 if(am.isSuscribed()) {
                     subscribed();
+                } else {
+                    alert('No se ha dectado una suscripción previa ..');
                 }
             })
             

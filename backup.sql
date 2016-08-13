@@ -18,14 +18,15 @@ USE `anexmailing`;
 -- Volcando estructura para tabla anexmailing.am_mailing
 CREATE TABLE IF NOT EXISTS `am_mailing` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `relation` varchar(50) NOT NULL DEFAULT '',
   `email` varchar(100) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT '',
+  `relation` varchar(50) NOT NULL DEFAULT '',
   `inactive` tinyint(4) NOT NULL DEFAULT '0',
   `added_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=144281 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla anexmailing.am_mailing: ~144,265 rows (aproximadamente)
 /*!40000 ALTER TABLE `am_mailing` DISABLE KEYS */;
