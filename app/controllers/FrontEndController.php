@@ -31,8 +31,6 @@ class FrontEndController extends \Core\Controller {
     }
     
     public function add() {
-        header('application/json');
-        
         $req = Request::fromBody();
         
         if(!Token::verify(@$req['token'])){
