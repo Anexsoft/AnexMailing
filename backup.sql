@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `am_mailing` (
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla anexmailing.am_mailing: ~144,265 rows (aproximadamente)
 /*!40000 ALTER TABLE `am_mailing` DISABLE KEYS */;
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `am_mailing` (
   `is_active` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;*/
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;*/
 
 -- Volcando datos para la tabla anexmailing.am_user: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `am_user` DISABLE KEYS */;
