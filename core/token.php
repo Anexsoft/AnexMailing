@@ -3,13 +3,12 @@ namespace Core;
 
 class Token {
     public static function generate () {
-        $string = \Config::get()->tokenAuthSecurity . self::aud();
-        return password_hash( $string, PASSWORD_DEFAULT );
+        return sha1(\Config::get()->tokenAuthSecurity . self::aud());
     }
     
     public static function verify ( $hash ) {
-        $string = \Config::get()->tokenAuthSecurity . self::aud();
-        return password_verify ($string, $hash);
+        $string = sha1(\Config::get()->tokenAuthSecurity . self::aud());
+        return $hash === $string;
     }
     
     private static function aud() {
