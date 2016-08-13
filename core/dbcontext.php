@@ -14,8 +14,9 @@ class DbContext {
 
             if($config->environment === 'dev') {
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);                
             }
+
+            $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
             
             self::$db = new \FluentPDO($pdo);            
         }

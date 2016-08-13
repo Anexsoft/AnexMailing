@@ -90,7 +90,7 @@ class Mailing {
            ->limit($anexgrid->limite)
            ->offset($anexgrid->pagina);
 
-        /* Filtro */
+        /* Filter */
         $ignoreDelete = false;
         foreach($anexgrid->filtros as $f)
         {
@@ -119,20 +119,16 @@ class Mailing {
         }
 
         if(!$ignoreDelete) {
-        $query = $query->where('inactive', 0);
+            $query = $query->where('inactive', 0);
         }
 
-        /* Los registros */
+        /* Records */
         $result = $query->fetchAll();
 
-        /* El total de registros */
-        $total = $this->db
-                    ->from($this->table)
-                    ->select('COUNT(*) Total')
-                    ->fetch()
-                    ->Total;
+        /* Total of records */
+        $total = $query->count();
 
-        return $anexgrid->responde($result, $total);
+        return $anexgrid->responde($result, (int) $total);
     }
 
     public function groups(){
@@ -189,7 +185,7 @@ class Mailing {
                             ->select(null)
                             ->select('count(*) total')
                             ->where('inactive', 1)
-                            ->fetch();        
+                            ->fetch();
         
         $data = (object) [
             'today'       => is_object($today) ? $today->total : 0,

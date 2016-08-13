@@ -28,7 +28,7 @@ if($config->environment === 'stop') {
 }
 
 if($config->environment === 'prod') {
-    error_reporting(0);
+    //error_reporting(0);
 }
 /* Configuration End */
 

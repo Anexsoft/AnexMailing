@@ -13,11 +13,12 @@ use App\Helpers\Url,
 class AuthController extends \Core\Controller {
     private $um,
             $rm,
-            $gump;
-    
+            $config;
+
     public function __CONSTRUCT() {
         $this->um = new User();
         $this->rm = new Response();
+        $this->config = Config::get();
     }
     
     public function index() {
@@ -25,7 +26,9 @@ class AuthController extends \Core\Controller {
             Url::redirect('home');
         }
         
-        $this->view('auth/index');
+        $this->view('auth/index', [
+            'config' => $this->config
+        ]);
     }
     
     public function signin() {

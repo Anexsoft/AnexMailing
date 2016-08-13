@@ -4,6 +4,9 @@
 <div id="login" class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
+            <h1 class="page-header">
+                <?php echo $config->productName; ?> <small><?php echo $config->productVersion; ?></small>
+            </h1>
             <div class="login-panel panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Bienvenido al administrador</h3>
