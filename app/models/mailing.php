@@ -25,13 +25,17 @@ class Mailing {
             $this->rm->result = 'exists';
             return $this->rm->setResponse(false, 'Este correo ya ha sido registrado');
         } else {
-          // Sanatize
-          $data['name'] = ucwords($data['name']);
-          $data['name'] = explode(' ', $data['name'])[0];
+            $date = date('Y-m-d h:i:s');
+            $data['added_at'] = $date;
+            $data['updated_at'] = $date;
+            
+            // Sanatize
+            $data['name'] = ucwords($data['name']);
+            $data['name'] = explode(' ', $data['name'])[0];
 
             $this->db->insertInto($this->table)
-                     ->values($data)
-                     ->execute();
+                 ->values($data)
+                 ->execute();
 
             return $this->rm->setResponse(true);
         }

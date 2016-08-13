@@ -4,7 +4,7 @@ namespace Core;
 use Monolog\Logger,
     Monolog\Handler\StreamHandler;
 
-class Logger {
+class Log {
     public static function warning($name, $message) {
         self::put($name, $message, Logger::WARNING);
     }

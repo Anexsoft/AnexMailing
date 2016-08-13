@@ -6,7 +6,7 @@ use App\Helpers\Url,
     Core\Request,
     Core\Json,
     Core\Response,
-    Core\Logger,
+    Core\Log,
     Core\Token,
     App\Validations\SubscriptorValidation,
     Firebase\JWT\JWT,
@@ -36,7 +36,7 @@ class FrontEndController extends \Core\Controller {
         $req = Request::fromBody();
         
         if(!Token::verify(@$req['token'])){
-            Logger::warning(
+            Log::warning(
                 'SUBSCRIPTION',
                 'Subscription token failed ..'
             );
@@ -50,7 +50,11 @@ class FrontEndController extends \Core\Controller {
         $val = SubscriptorValidation::validate( $req );
             
         if ($val->isSuccess()) {
-            $this->rm = $this->mm->add( $req );
+            $this->rm = $this->mm->add([
+                'email'    => $req['email'],
+                'name'     => empty($req['name']) ? '' : $req['name'],
+                'relation' => empty($req['relation']) ? '' : $req['relation'],
+            ]);
         } else {
             $this->rm->setErrors( $val->getErrors() );
         }

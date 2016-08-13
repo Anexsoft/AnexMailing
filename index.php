@@ -24,7 +24,7 @@ define('_LOG_PATH_', __DIR__ . '/log/');
 define('_APP_PATH_', __DIR__ . '/app/');
 
 if($config->environment === 'stop') {
-    exit('Website is current down ..');
+    exit(sprintf('%s is current down ..', $config->productName));
 }
 
 if($config->environment === 'prod') {

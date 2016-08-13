@@ -89,7 +89,7 @@
                     
                     // Si el request fue éxitoso
                     if(type === 'success') {
-                        
+                        subscribed();
                     }
                     
                     // Si ocurrió un error de validación
@@ -114,10 +114,14 @@
             
             $("#verifyIfSuscribed").click(function(){
                 if(am.isSuscribed()) {
-                    $("#subscription-container").html('¡Gracias, lo mantendremos al tanto de nuestras novedades!')
-                                                .addClass('alert alert-success');
+                    subscribed();
                 }
             })
+            
+            function subscribed(){
+                $("#subscription-container").html('¡Gracias, lo mantendremos al tanto de nuestras novedades!')
+                                            .addClass('alert alert-success');
+            }
         })
     </script>
 </body>
