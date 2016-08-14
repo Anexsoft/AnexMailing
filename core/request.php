@@ -31,7 +31,7 @@ class Request {
             if(is_array($r)) {
                 $data[$k] = self::sanitize ( $data[$k] );
             } else {
-                $data[$k] = trim($r);
+                $data[$k] = strip_tags(trim($r));
             }
         }
 
