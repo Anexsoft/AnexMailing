@@ -32,6 +32,7 @@ class Mailing {
             // Sanatize
             $data['name'] = ucwords($data['name']);
             $data['name'] = explode(' ', $data['name'])[0];
+            $data['email'] = strtolower($data['email']);
 
             $this->db->insertInto($this->table)
                  ->values($data)
@@ -55,6 +56,7 @@ class Mailing {
             // Sanatize
             $data['name'] = ucwords($data['name']);
             $data['name'] = explode(' ', $data['name'])[0];
+            $data['email'] = strtolower($data['email']);
 
             $this->db->update(
                 $this->table, $data, $id
