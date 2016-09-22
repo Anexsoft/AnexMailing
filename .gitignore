@@ -42,6 +42,10 @@ clients/*
 .Trashes
 .VolumeIcon.icns
 
+vendor/*
+assets/bower_components/*
+assets/gulp/node_modules/*
+
 # Directories potentially created on remote AFP share
 .AppleDB
 .AppleDesktop
