@@ -26,7 +26,7 @@ if(strtolower(Router::$controller) !== 'auth' && strtolower(Router::$controller)
     <title><?php echo $productName; ?></title>
     
     <link href="<?php echo Url::getAsset('bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>" rel="stylesheet" />
-    <link href="<?php echo Url::getAsset('bower_components/bootstrap/dist/css/theme.css'); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo Url::getAsset('css/theme.css'); ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo Url::getAsset('bower_components/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css" />
 
     <?php if($config->environment !== 'prod'){ ?>
