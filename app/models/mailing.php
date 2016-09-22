@@ -128,9 +128,11 @@ class Mailing {
         $result = $query->fetchAll();
 
         /* Total of records */
+        $query->limit(null);
+        $query->offset(null);
         $total = $query->count();
 
-        return $anexgrid->responde($result, (int) $total);
+        return $anexgrid->responde($result, $total);
     }
 
     public function groups(){

@@ -1,0 +1,22 @@
+{
+  "name": "AnexMailing",
+  "homepage": "https://github.com/Anexsoft/AnexMailing",
+  "authors": [
+    "Anexsoft"
+  ],
+  "description": "All client files for AnexMailing projects",
+  "main": "bower",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "moment": "^2.15.1",
+    "font-awesome": "^4.6.3",
+    "riot": "^2.6.2",
+    "highcharts": "hightcharts#^4.2.7"
+  }
+}

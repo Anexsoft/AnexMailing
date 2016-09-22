@@ -16,7 +16,7 @@ class Config {
             ],
             
             /* Environment*/
-            'environment' => 'dev', // Options: dev, prod, stop
+            'environment' => 'prod', // Options: dev, prod, stop
 
             /* Timezone */
             'timezone' => 'America/Lima',

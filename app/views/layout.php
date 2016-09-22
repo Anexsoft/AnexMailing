@@ -24,13 +24,16 @@ if(strtolower(Router::$controller) !== 'auth' && strtolower(Router::$controller)
     <meta name="author" content="">
 
     <title><?php echo $productName; ?></title>
-
+    
     <link href="<?php echo Url::getAsset('bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>" rel="stylesheet" />
     <link href="<?php echo Url::getAsset('bower_components/bootstrap/dist/css/theme.css'); ?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo Url::getAsset('css/style.css'); ?>" rel="stylesheet" type="text/css" />
-
-    <!-- Custom Fonts -->
     <link href="<?php echo Url::getAsset('bower_components/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css" />
+
+    <?php if($config->environment !== 'prod'){ ?>
+        <link href="<?php echo Url::getAsset('css/style.css'); ?>" rel="stylesheet" type="text/css" />
+    <?php } else { ?>
+        <link href="<?php echo Url::getAsset('publish/application.css'); ?>" rel="stylesheet" type="text/css" />
+    <?php } ?>
 </head>
 
 <body>
@@ -105,25 +108,29 @@ if(strtolower(Router::$controller) !== 'auth' && strtolower(Router::$controller)
     <?php } else { ?>
         <?php echo $this->render(); ?>
     <?php } ?>
+    
+    <?php if($config->environment !== 'prod'){ ?>
+        <script src="<?php echo Url::getAsset('bower_components/jquery/dist/jquery.min.js'); ?>"></script>
+        <script src="<?php echo Url::getAsset('bower_components/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
+        <script src="<?php echo Url::getAsset('bower_components/riot/riot.min.js'); ?>"></script>
+        <script src="<?php echo Url::getAsset('bower_components/riot/riot+compiler.min.js'); ?>"></script>
 
-    <script src="<?php echo Url::getAsset('bower_components/jquery/dist/jquery.min.js'); ?>"></script>
-    <script src="<?php echo Url::getAsset('bower_components/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
-    <script src="<?php echo Url::getAsset('bower_components/riot/riot.min.js'); ?>"></script>
-    <script src="<?php echo Url::getAsset('bower_components/riot/riot+compiler.min.js'); ?>"></script>
+        <!-- Moment JS -->
+        <script src="<?php echo Url::getAsset('bower_components/moment/min/moment.min.js'); ?>"></script>
+        <script src="<?php echo Url::getAsset('bower_components/moment/locale/es.js'); ?>"></script>
 
-    <!-- Moment JS -->
-    <script src="<?php echo Url::getAsset('bower_components/moment/min/moment.min.js'); ?>"></script>
-    <script src="<?php echo Url::getAsset('bower_components/moment/locale/es.js'); ?>"></script>
-    
-    <!-- Hightcharts -->
-    <script src="<?php echo Url::getAsset('bower_components/highcharts/highcharts.js'); ?>"></script>
-    
-    <!-- App Logic -->
-    <script src="<?php echo Url::getAsset('js/ini.js'); ?>"></script>
-    <script src="<?php echo Url::getAsset('js/jquery.form.js'); ?>"></script>
-    
-    <!-- AnexGRID -->
-    <script src="<?php echo Url::getAsset('js/jquery.anexgrid.min.js'); ?>"></script>
+        <!-- Hightcharts -->
+        <script src="<?php echo Url::getAsset('bower_components/highcharts/highcharts.js'); ?>"></script>
+
+        <!-- App Logic -->
+        <script src="<?php echo Url::getAsset('js/ini.js'); ?>"></script>
+        <script src="<?php echo Url::getAsset('js/jquery.form.js'); ?>"></script>
+
+        <!-- AnexGRID -->
+        <script src="<?php echo Url::getAsset('js/jquery.anexgrid.min.js'); ?>"></script>
+    <?php } else { ?>
+        <script src="<?php echo Url::getAsset('publish/application.js'); ?>"></script>
+    <?php } ?>
 
     <?php echo $this->section('scripts'); ?>
 
