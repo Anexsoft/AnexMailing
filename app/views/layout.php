@@ -64,11 +64,9 @@ if(strtolower(Router::$controller) !== 'auth' && strtolower(Router::$controller)
                     <li class="<?php echo strpos($currentRoute, 'subscriptor') !== false ? 'active' : ''; ?>">
                         <a href="<?php echo Url::getBase('subscriptor'); ?>"><i class="fa fa-envelope"></i> Suscriptores</a>
                     </li>
-                    <?php if($config->environment !== 'prod'): ?>
                     <li>
                         <a target="_blank" href="<?php echo Url::getBase('example'); ?>"><i class="fa fa-file"></i> Página de ejemplo</a>
                     </li>
-                    <?php endif; ?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="<?php echo strpos($currentRoute, 'user') !== false ? 'active' : ''; ?>">

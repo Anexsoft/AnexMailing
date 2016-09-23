@@ -2,14 +2,13 @@
 namespace App\Controllers;
 
 use App\Helpers\Url,
+    Core\Auth,
     Config;
 
 class ExampleController extends \Core\Controller {
     public function __CONSTRUCT(){
-        $config = Config::get();
-
-        if(!$config->environment === 'prod') {
-            Url::redirect('');
+        if( !Auth::verify() ) {
+            Url::redirect('auth');
         }
     }
     public function index() {
