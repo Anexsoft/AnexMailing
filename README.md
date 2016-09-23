@@ -81,5 +81,10 @@ npm update
 * <b>trustedDomain</b>: son los dominios de confianza, los que no sean igual a estos los considerará como posiblemente falsos.
 * <b>startYear</b>: el año de inicio para tu proyecto, ideal para el dashboard y otras cosas.
 
+# Tareas pendientes
+* Lanzar la web oficial
+* Documentación oficial
+* Api de exportación a Mailchimp, por ahora se usa un CSV
+
 # Créditos
 Realizado por <a href="http://anexsoft.com">Anexsoft</a>.
