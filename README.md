@@ -72,7 +72,7 @@ npm update
 5- Edita el archivo config.php, este es demasiado intuitivo pero de todas formas vamos a explicar
 * <b>database</b>: en este pondrán su cadena de conexión, la api que usa la App para conectarse a la DB es PDO.
 * <b>users</b>: es un arreglo que permite gestionar los usuarios de la App.
-* <b>environment</b>: modifica el entorno de desarrollo actual, para testing esta bien dev para publicación se recomienda dev.
+* <b>environment</b>: modifica el entorno de desarrollo actual, para testing esta bien <b>dev</b> para publicación se recomienda <b>prod</b>.
 * <b>timezone</b>: la hora local de tu zona geográfica
 * <b>tokenAuthSecurity</b>: es un secret key que usa para el tema de seguridad con la autenticación, cambien este valor por algo único.
 * <b>trustedDomain</b>: son los dominios de confianza, los que no sean igual a estos los considerará como posiblemente falsos.
