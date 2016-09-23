@@ -18,9 +18,6 @@ Mediante un javascript que genera el backend se creará toda la API para que des
 
 <b>Nota</b>: <em>por ahora el front-office no es tan importante, me gustaría que me apoyen más con el back-office</em>.
 
-<b>Ejemplo del front-office</b>: si tu entorno de trabajo es DEV podrás acceder desde el administrador una página de prueba.
-Su configuración es muy simple
-
 ```
 var am = new AnexMailing({
     email: 'email',
