@@ -1,0 +1,13 @@
+1- Deben tener el modrewrite activo para que la app reconozca las url.
+2- Las dependencias no las he incluido para alivianar la descarga
+   * Composer: en la carpeta raíz del proyecto correr el siguiente comando
+     - composer update
+   * Bower: en la carpeta assets
+     - bower update
+   * Gulp (Opcional): si quieren modificar el archivo de gulp en la carpeta assets/gulp
+     - npm update
+
+3- Modifiquen el archivo config.php, ahi mismo crean los usuarios. (Es bastante fácil e intuitivo)
+4- En la carpeta sql encontrarán el script de la base de datos, solo usa una tabla.
+
+NOTA: obviamente deben tener habilitado composer y bower
